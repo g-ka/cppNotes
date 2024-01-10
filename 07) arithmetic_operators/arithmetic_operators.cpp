@@ -13,7 +13,7 @@ int main() {
   */
 
   double result = count/2;
-  // every variables(LHS and RHS) involved in division operation must be of 'double' datatype, to earn a decimal result. Else the decimal portion will be truncated.
+  // Any operation between double and int will result in a double value
 
   std::cout << result << "\n"; //output: 10.5
   std::cout<< 5+2-3*10/5; //output: 1
