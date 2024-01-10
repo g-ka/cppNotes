@@ -39,8 +39,8 @@ int main() {
   // string is an object datatype
   std::string name = "g kaphil athithiya";  
 
-  std::cout << name << '\n';
-  std::cout << "Hello " << name;
+  std::cout << name << '\n'; //output: g kaphil athithiya
+  std::cout << "Hello " << name; //output: Hello g kaphil athithiya
   // string should be declared in double quotes, single quotes will throw an error
 
   return 0;
