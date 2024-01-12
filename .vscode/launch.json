@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "e:/tech_books/c++Notes",
-      "program": "e:/tech_books/c++Notes/build/Debug/outDebug",
+      "cwd": "e:/tech_books/c++Notes/33) pass_by_valueAndReference",
+      "program": "e:/tech_books/c++Notes/33) pass_by_valueAndReference/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

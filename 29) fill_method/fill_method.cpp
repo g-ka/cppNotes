@@ -2,9 +2,9 @@
 
 /*
 syntax:
-fill(start_address, end_address, value)
+fill(start, end, value)
 
--- Helps in filling the array with the specified value from the start to end address
+-- Helps in filling the array with the specified value from the start to end
 */
 
 int main() {
