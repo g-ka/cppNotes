@@ -27,5 +27,5 @@ void sort(int a[], const int SIZE){
       a[j+1] = largeNum;
     }
   }
-  
+
 }

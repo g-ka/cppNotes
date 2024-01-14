@@ -4,7 +4,7 @@ void sort(int a[], int);
 
 int main(){
 
-  int numbers[] = {13,5,2,18,7,1};
+  int numbers[] = {9,13,2,5,30,21,3,8,27,1};
   const int SIZE = sizeof(numbers)/sizeof(int);
 
   sort(numbers, SIZE);
