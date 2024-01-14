@@ -2,7 +2,8 @@
 
 /*
 syntax:
-fill(start, end, value)
+fill(start, end, value) 
+=> start = array + index(inclusive) and end = array + index(exclusive)
 
 -- Helps in filling the array with the specified value from the start to end
 */
@@ -10,9 +11,8 @@ fill(start, end, value)
 int main() {
 
   std::string foodItems[10];
-  const int SIZE = sizeof(foodItems)/sizeof(std::string);
 
-  fill(foodItems, foodItems + 10, "kool");
+  fill(foodItems, foodItems + 10, "kool"); // fill the specified value from index 0 to 9
 
   for(std::string food : foodItems) {
     std::cout << food << "\n";
