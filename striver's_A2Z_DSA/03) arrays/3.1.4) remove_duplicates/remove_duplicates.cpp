@@ -4,7 +4,7 @@ void removeDupOf(int a[], int &SIZE);
 
 int main(){
 
-  int numbers[] = {1,2,2,3,3,3,4,5,5};
+  int numbers[] = {1,1,1,2,2,3,3,3,55,78,89,89,90,91};
   int SIZE = sizeof(numbers)/sizeof(int);
 
   removeDupOf(numbers, SIZE);
