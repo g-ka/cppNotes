@@ -16,6 +16,7 @@ int main(){
 }
 
 int NRelIn(int a[], const int SIZE){
+  
   int hash[SIZE+1];
   std::fill(hash, hash+SIZE+1, 0);
 
