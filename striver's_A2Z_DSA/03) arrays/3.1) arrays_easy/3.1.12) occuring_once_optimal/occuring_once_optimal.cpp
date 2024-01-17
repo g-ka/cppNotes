@@ -16,13 +16,11 @@ int main(){
 }
 
 int NRelIn(int a[], const int SIZE){
+  int XOR = 0;
   
-  int hash[SIZE+1];
-  std::fill(hash, hash+SIZE+1, 0);
-
   for(int i=0; i<SIZE; i++){
-    hash[a[i]]++;
+    XOR = XOR^a[i];
   }
 
-  for(int i=0; i<SIZE+1; i++) if(hash[i] == 1) return i;
+  return XOR;
 }
