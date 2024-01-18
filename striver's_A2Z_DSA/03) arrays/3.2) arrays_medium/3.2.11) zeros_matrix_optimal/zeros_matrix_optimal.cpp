@@ -39,7 +39,6 @@ int main(){
       if(!numbers[i][0] || !numbers[0][j]) numbers[i][j] = 0;
     }
   }
-
   if(!numbers[0][0]){
     for(int i=0; i<cols; i++){
       numbers[0][i] = 0;
