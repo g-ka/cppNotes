@@ -4,7 +4,7 @@ void longSubarraySumOf(int a[], int, int);
 
 int main(){
 
-  int numbers[] = {1,-3,-2,1,4,-5,6,-7,9,0,-2,1,4};
+  int numbers[] = {9,-3,-2,1,4,-5,6,-7,9,0,1,-2,1,4};
   const int SIZE = sizeof(numbers)/sizeof(int);
   const int K = 4;
 
@@ -24,15 +24,20 @@ void longSubarraySumOf(int a[], const int SIZE, const int K){
   while(e<SIZE){
     // count++;
     if(sum > K){
-      sum -= a[s];
-      s++;
+      if(s!=e){
+        sum -= a[s];
+        s++;
+      }else{
+        e++;
+        sum += a[e];
+      }      
     }else if(sum == K){
       if(e-s > se-ss){
         ss = s;
         se = e;
       }
-      sum -= a[s];
-      s++;
+      e++;
+      sum += a[e];
     }else{
       e++;
       sum += a[e];
@@ -40,7 +45,7 @@ void longSubarraySumOf(int a[], const int SIZE, const int K){
   }  
 
 // std::cout << "count: " << count << "\n";
-  if(se == -1) std::cout << "No such subarray exist";
+  if(ss == -1) std::cout << "No such subarray exist";
   else{
     for(int i=ss; i<=se; i++){
       std::cout << a[i] << " ";
