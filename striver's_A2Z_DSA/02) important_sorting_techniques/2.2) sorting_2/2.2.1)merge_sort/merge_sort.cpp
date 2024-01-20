@@ -5,7 +5,7 @@ void merge(int a[], int low, int mid, int high);
 
 int main(){
 
-  int numbers[] = {1,3,4,6,9,12};
+  int numbers[] = {3,2,4,1,3};
   const int SIZE = sizeof(numbers)/sizeof(int);
 
   sort(numbers, 0, SIZE-1);
@@ -49,6 +49,12 @@ void merge(int a[], int low, int mid, int high){
   while(p2<=high){
     temp[index] = a[p2];
     p2++;
+    index++;
+  }
+
+  index = 0;
+  for(int i=low; i<=high; i++){
+    a[i] = temp[index];
     index++;
   }
 }
