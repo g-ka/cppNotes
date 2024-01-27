@@ -43,7 +43,7 @@ int main(){
     std::cout << *start << " ";
   }
 
-  // 'auto' keyword will automatically assign the datatype to the variable according to the value we initialize it with:
+  // 'auto' keyword will automatically assign the datatype to the variable according to the value you initialize it with:
   auto num = 12;
   std::cout << "\n" << "num datatype: " << typeid(num).name() << "\n";
 
