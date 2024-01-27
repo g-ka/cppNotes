@@ -17,7 +17,7 @@ int main(){
   v2.push_back({1,2});
   v2.emplace_back(3,4); // automatically assumes it to pair
 
-  std::vector<int> v3(5, 100); // creates a vector with first 5 element as 100
+  std::vector<int> v3(5, 100); // creates a vector with first 5 element as 100 => 100 100 100 100 100
 
   std::vector<int> v4(v1); // creates v4 and copies v1 into it
 
@@ -57,6 +57,42 @@ int main(){
   for(auto start: v1){
     std::cout << start << " ";
   }std::cout << "\n";
+
+  // ----- 4) element deletion:
+
+  for(int i=3; i<=10; i++){
+    v1.push_back(i);
+  }
+
+  // "earse" takes pointer as input and deletes the element stored at the memory location to which the pointer points
+  // NOTE: [start, end)
+  v1.erase(v1.begin(), v1.begin()+2); // deletes first and second element in v1 => 3 4 5 6 7 8 9 10  
+  v1.erase(v1.begin()+3); // deletes element at index 3 => 3 4 5 7 8 9 10
+
+  // ----- 5) element insertion:
+
+  v1.insert(v1.begin(), 2); // 2 3 4 5 7 8 9 10
+  v1.insert(v1.begin()+3, 11); // 2 3 4 11 5 7 8 9 10
+  v1.insert(v1.begin()+1, 2, 12); // 2 12 12 3 4 11 5 7 8 9 10
+
+  // ----- 6) useful methods:
+
+  // size():
+  std::cout << "size: " << v1.size() << "\n"; // 11
+
+  // pop_back(): deletes the last element
+  v1.pop_back(); // 2 12 12 3 4 11 5 7 8 9
+
+  // swap():
+  v1.swap(v3); 
+  // v1: 100 100 100 100 100
+  // v3: 2 12 12 3 4 11 5 7 8 9
+
+  // clear():
+  v1.clear(); // v1: {}
+
+  // empty(): returns true(1) if vector is empty else returns false(0)
+  std::cout << "isEmpty: " << v1.empty();
 
   return 0;
 }
