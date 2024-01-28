@@ -4,9 +4,9 @@ void longSubarraySumOf(int a[], int, int);
 
 int main(){
 
-  int numbers[] = {9,-3,-2,1,4,-5,6,-7,9,0,1,-2,1,4};
+  int numbers[] = {2,3,5,1,9};
   const int SIZE = sizeof(numbers)/sizeof(int);
-  const int K = 4;
+  const int K = 10;
 
   longSubarraySumOf(numbers, SIZE, K);
 
