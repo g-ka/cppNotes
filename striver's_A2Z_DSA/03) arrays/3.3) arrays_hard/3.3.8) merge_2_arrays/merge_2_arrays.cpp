@@ -5,8 +5,8 @@ void merge2arrays(std::vector<int>& v1, std::vector<int>& v2);
 
 int main(){
 
-  std::vector<int> v1{1,2,3};
-  std::vector<int> v2{2,5,6,8};
+  std::vector<int> v1{1, 8, 8};
+  std::vector<int> v2{2, 3, 4, 5};
 
   merge2arrays(v1, v2);
 
@@ -23,7 +23,7 @@ void merge2arrays(std::vector<int>& v1, std::vector<int>& v2){
       int temp = v1[p1];
       v1[p1] = v2[0];
       v2[0] = temp;
-      for(int p2=0; v2[p2]>v2[p2+1]; p2++){
+      for(int p2=0; v2[p2]>v2[p2+1] && p2<v2.size()-1; p2++){
         int temp = v2[p2];
         v2[p2] = v2[p2+1];
         v2[p2+1] = temp;
