@@ -5,7 +5,7 @@ int inversionNum(std::vector<int> v);
 
 int main(){
 
-  std::vector<int> v{5,4,3,2,1};
+  std::vector<int> v{8,7,6,5,4,3,2,1};
   int count;
 
   count = inversionNum(v);
