@@ -10,7 +10,7 @@ namespace global{
 
 int main(){
 
-  std::vector<int> v{8,7,6,5,4,3,2,1};
+  std::vector<int> v{15, 28, 11, 20, 14, 7, 14, 2, 15, 4, 22, 19, 17, 1, 26, 6, 20, 2, 6};
 
   inversionNum(v, 0, v.size()-1);
 
@@ -35,21 +35,20 @@ void merge(std::vector<int> a, int low, int mid, int high){
 
   while(p1<=mid && p2<=high){
     if(a[p1] < a[p2]){      
+      global::count += (mid-p1+1)*(p2-mid-1);
       temp[index] = a[p1];
       p1++;
       index++;
     }else{
-      global::count++;
       temp[index] = a[p2];
       p2++;
+      if(p2 == high+1) global::count += (mid-p1+1)*(p2-mid-1);
       index++;
     }
   }
 
   while(p1<=mid){
-    global::count += high - mid;
     temp[index] = a[p1];
-    if(p1==mid) global::count -= high - mid;
     p1++;
     index++;
   }
