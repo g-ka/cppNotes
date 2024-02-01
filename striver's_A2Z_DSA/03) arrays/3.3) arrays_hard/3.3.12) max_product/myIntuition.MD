@@ -1,24 +1,11 @@
-#include <iostream>
-#include <bits/stdc++.h>
-
-int maxProd(std::vector<int> v);
-
-int main(){
-
-  std::vector<int> v{2,-5,-2,-4,3};
-  int result;
-
-  result = maxProd(v);
-
-  std::cout << result;
-
-  return 0;
-}
-
+```
 int maxProd(std::vector<int> v){
   int maxProd = v[0];
   int prod1 = 0;
   int prod2 = 0;
+  int maxPosProd = 0;
+  int posProd = 0;
+  int isEncounter = false;
 
   for(int i=0; i<v.size(); i++){
       // products from start
@@ -32,7 +19,17 @@ int maxProd(std::vector<int> v){
       if(prod2 == 0) prod2 += v[v.size() - i - 1];
       else prod2 *= v[v.size() - i - 1];            
       if(prod2 > maxProd) maxProd = prod2;
+
+      // pure positive number products
+      if(v[i] <= 0) posProd = 0;
+      else{
+          isEncounter = true;
+          if(posProd == 0) posProd += v[i];
+          else posProd *= v[i];
+          if(posProd > maxPosProd) maxPosProd = posProd;
+      }
   }
 
-  return maxProd;
+  return (maxProd < maxPosProd && isEncounter ? maxPosProd : maxProd);
 }
+```
