@@ -25,6 +25,7 @@
 // 2) both have data members and member functions
 // 3) both have constructors and destructors
 
+// It is a convention to declare classes with first letter caps
 class car{
   // access modifier:
   public:
@@ -82,8 +83,14 @@ int main(){
   // creating an object by passing arguments to constructors:
   car dodger("Dodger", "Challenger");
   dodger.setReg(false);
+  std::cout << "Dodger isReg: " << dodger.isReg << "\n";
 
   dodger.displayDetails();
-  
+
+  // creating a pointer object:
+  car *startNode = new car("Ford", "Mustang");
+  std::cout << "Memory location: " << startNode << "\n";
+  std::cout << startNode->name << " " << startNode->model << "\n";
+
   return 0;
 }
