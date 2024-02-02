@@ -19,7 +19,7 @@ class Node{
 };
 
 void insertFirst(int value, Node*& head);
-bool isLoop(Node* head);
+Node* cycleStartAt(Node* head);
 
 int main(){
 
@@ -32,9 +32,11 @@ int main(){
 
   for(Node* ptr=head; ptr!=nullptr; ptr=ptr->next) std::cout << ptr->data << " ";
 
-  bool loopExist = isLoop(head);
+  Node* startIndex = cycleStartAt(head);
 
-  std::cout << "\n" << loopExist;
+  std::cout << "\n";
+  if(startIndex==nullptr) std::cout << "NO LOOP";
+  else std::cout << startIndex;
 
   return 0;
 }
@@ -45,14 +47,20 @@ void insertFirst(int value, Node*& head){
   head = currentNode;
 }
 
-bool isLoop(Node* head){
+Node* cycleStartAt(Node* head){
   Node* ptr1 = head;
   Node* ptr2 = head;
   while(ptr2!=nullptr && ptr2->next!=nullptr){
       ptr1 = ptr1->next;            
       ptr2 = ptr2->next->next;        
-      if (ptr1 == ptr2) return true; 
-      
+      if (ptr1 == ptr2){
+          Node* indexPtr = head;                
+          while(indexPtr != ptr1){
+          indexPtr = indexPtr->next;
+          ptr1 = ptr1->next;
+          }
+          return indexPtr; 
+      }            
   }
-  return false;
+  return nullptr;
 }
