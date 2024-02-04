@@ -60,34 +60,48 @@ void insertFirst(int value, Node*& head){
 Node* add2LL(Node* head1, Node* head2){
   Node* ptr1 = head1;
   Node* ptr2 = head2;
-  std::vector<int> sum;
   int remainder = 0;
+  Node* head = nullptr;
+  Node* temp = nullptr;
 
   while(ptr1!=nullptr && ptr2!=nullptr){
     int num = ptr1->data + ptr2->data + remainder;
-    remainder = num/10;
-    sum.push_back(num%10);    
+    remainder = num/10;  
+    Node* currentNode = new Node(num%10);
+    if(temp==nullptr){
+      temp = currentNode;
+      head = temp;
+    }
+    else{
+      temp->next = currentNode;
+      temp = currentNode;
+    }
     ptr1 = ptr1->next;
     ptr2 = ptr2->next;
   }
 
   while(ptr1!=nullptr){
     int num = ptr1->data + remainder;
-    remainder = num/10;
-    sum.push_back(num%10);    
+    remainder = num/10;   
+    Node* currentNode = new Node(num%10);
+    temp->next = currentNode;
+    temp = currentNode;
     ptr1 = ptr1->next;
   }
   while(ptr2!=nullptr){
     int num = ptr2->data + remainder;
     remainder = num/10;
-    sum.push_back(num%10);    
+    Node* currentNode = new Node(num%10);
+    temp->next = currentNode;
+    temp = currentNode;
     ptr2 = ptr2->next;
   }
 
-  if(remainder!=0) sum.push_back(remainder);
-
-  Node* head = nullptr;  
-  for(int i=sum.size()-1; i>=0; i--) insertFirst(sum[i], head);
+  if(remainder!=0){
+    Node* currentNode = new Node(remainder);
+    temp->next = currentNode;
+    temp = currentNode;
+  }
 
   return head;
 }
