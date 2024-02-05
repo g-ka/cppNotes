@@ -22,32 +22,32 @@ class Node{
   }
 };
 
-void insertFirst(int value, Node*& head);
+void insertFirst(int value, Node*& head, Node*& tail);
 
 int main(){
 
   Node* head = nullptr;
-  insertFirst(4, head);
-  insertFirst(3, head);
-  insertFirst(2, head);
-  insertFirst(1, head);
+  Node* tail = nullptr; 
+  insertFirst(4, head, tail);
+  insertFirst(3, head, tail);
+  insertFirst(2, head, tail);
+  insertFirst(1, head, tail);   
 
-  Node* tail = nullptr;
-
-  for(Node* ptr=head; ptr!=nullptr; ptr=ptr->next){
-    std::cout << ptr->data << " ";
-    if(ptr->next==nullptr) tail = ptr;
-  }
-
+  for(Node* ptr=head; ptr!=nullptr; ptr=ptr->next) std::cout << ptr->data << " ";
   std::cout << "\n";
   for(Node* ptr=tail; ptr!=nullptr; ptr=ptr->back) std::cout << ptr->data << " ";
 
   return 0;
 }
 
-void insertFirst(int value, Node*& head){
+void insertFirst(int value, Node*& head, Node*& tail){
   Node* currentNode = new Node(value);
-  currentNode->next = head;
-  if(head!=nullptr) head->back = currentNode;  
-  head = currentNode;
+  if(tail==nullptr){
+    head = currentNode;
+    tail = currentNode;
+  }else{
+    head->back = currentNode; 
+    currentNode->next = head;     
+    head = currentNode;
+  }
 }
