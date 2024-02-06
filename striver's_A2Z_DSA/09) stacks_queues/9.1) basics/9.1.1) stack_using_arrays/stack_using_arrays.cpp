@@ -26,6 +26,10 @@ class Stack{
     top--;
   }
   int Top(){
+    if(top==-1){
+      std::cout << "Code exit(1) due to Stack underflow";
+      exit(1);
+    }
     return arr[top];
   }
   int Size(){
@@ -41,13 +45,14 @@ int main(){
 
   Stack s;
   s.pop();
+  std::cout << s.Top() << "\n";
   s.push(1);
   s.push(3);
   s.push(3);
   s.push(3);
   s.push(8);
   s.push(8);
-  std::cout << s.Size() << "\n";
+  std::cout << s.Size() << "\n";  
 
   return 0;
 }
