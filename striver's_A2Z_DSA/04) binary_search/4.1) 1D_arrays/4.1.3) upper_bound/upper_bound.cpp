@@ -22,6 +22,6 @@ int upperBound(std::vector<int> nums, int target){
 		if(nums[middle] > target) end = middle;
 		else start = middle + 1;		
 	}
-	if(start == nums.size() - 1 && nums[start] <= target) return nums.size();
+	if(start == nums.size() - 1 && nums[start] <= target) return start + 1;
 	else return start;
 }
