@@ -23,6 +23,5 @@ int lowerBound(std::vector<int> nums, int target){
     else end = middle;
   }
   if(start == nums.size() - 1) return nums.size();
-  else if(start == 0) return 0;
   else return start;
 }
