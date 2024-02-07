@@ -2,7 +2,7 @@
 
 class Stack{
   public:
-  int top ;
+  int top;
   int size;
   int* arr;
   Stack(){
@@ -45,14 +45,15 @@ int main(){
 
   Stack s;
   s.pop();
-  std::cout << s.Top() << "\n";
   s.push(1);
   s.push(3);
   s.push(3);
   s.push(3);
   s.push(8);
-  s.push(8);
+  s.push(9);
+  std::cout << s.Top() << "\n";
   std::cout << s.Size() << "\n";  
+  std::cout << s.empty() << "\n";
 
   return 0;
 }

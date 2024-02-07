@@ -1,20 +1,20 @@
 #include <iostream>
 
-int nestParenCount(std::string s);
+int nestParentCount(std::string s);
 
 int main(){
 
   std::string s = "(1)+((2))+(((3)))";
   int count = 0;
 
-  count = nestParenCount(s);
+  count = nestParentCount(s);
 
   std::cout << count;
 
   return 0;
 }
 
-int nestParenCount(std::string s){
+int nestParentCount(std::string s){
   int maxCount = 0;
   int count = 0;
 
