@@ -65,8 +65,7 @@ class QueueLL{
     return size;
   }
   bool empty(){
-    if(front == nullptr) return true;
-    else return false;
+    return front == nullptr;
   }
 };
 

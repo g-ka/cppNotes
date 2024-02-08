@@ -3,59 +3,58 @@
 class Queue{
   public:
   int front;
-  int last;
-  int size;
+  int rear;
+  int currentSize;
+  int maxSize;
   int* arr;
   Queue(){
-    front = -1;
-    last = -1;
-    size = 5;
-    arr = new int[size];
+    front = 1;
+    rear = 1;
+    currentSize = 0;
+    maxSize = 5;
+    arr = new int[maxSize];
   }
   void push(int value){
-    if(last+1==size){
+    if(currentSize == maxSize){
       std::cout << "Queue is full\n";
       return;
-    }
-    if(front==-1){
-      last++;
-      arr[last] = value;
-      front++;
-    }else{
-      last++;
-      arr[last] = value;
+    }else{      
+      arr[rear%maxSize] = value;
+      rear++;
+      currentSize++;
     }
   }
   void pop(){
-    if(front==last && front==-1) std::cout << "Queue is empty\n";
-    if(front==last && front==0){
-      front = -1;
-      last = -1;
+    if(currentSize == 0){
+      std::cout << "Queue is empty\n";
+      return;
     }else{
-      for(int i=front; i<last; i++) arr[i] = arr[i+1];
-      last--;
+      arr[front%maxSize] = -1; // filler integer assuming the queue is only of non-negative integers
+      front++;
+      currentSize--;
     }
   }
   int Front(){
-    if(front==-1){
-      std::cout << "Code exit(1) as Queue is empty";
+    if(currentSize == 0){
+      std::cout << "Queue is empty\n";
       exit(1);
+    }else{
+      return arr[front%maxSize];
     }
-    return arr[front];
   }
-  int Last(){
-    if(last==-1){
-      std::cout << "Code exit(1) as Queue is empty";
+  int Rear(){
+    if(currentSize == 0){
+      std::cout << "Queue is empty\n";
       exit(1);
+    }else{      
+      return arr[(rear - 1)%maxSize];
     }
-    return arr[last];
   }
   int Size(){
-    return last+1;
+    return currentSize;
   }
   bool empty(){
-    if(front==-1) return true;
-    else return false;
+    return currentSize == 0;
   }
 };
 
@@ -71,10 +70,12 @@ int main(){
   q.pop();
   q.pop();
   q.pop();
-  q.pop();
-  q.pop();
+  q.pop();  
+  q.push(1);
+  q.push(2);
+  q.push(12);
   std::cout << q.Front() << "\n";
-  std::cout << q.Last() << "\n";
+  std::cout << q.Rear() << "\n";
 
   return 0;
 }
