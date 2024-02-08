@@ -34,7 +34,8 @@ std::pair<int, int> firstAndLast(std::vector<int> v, int target){
       if(v[middle] <= target) start = middle + 1;
       else end = middle;
     }
-    second = start - 1;
+    if(v[start] == target) second = start;
+    else second = start - 1;
   }
   return {first, second};
 }
