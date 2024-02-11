@@ -23,7 +23,7 @@ class Node{
   }
 };
 
-std::vector<int> preOrder(Node* root);
+std::vector<int> postOrder(Node* root);
 
 int main(){
 
@@ -40,52 +40,32 @@ Node* root = new Node(1);
   root->right->right->right = new Node(10);
   root->right->right->left = new Node(9); 
 
-  std::vector<int> result =  preOrder(root);
+  std::vector<int> result =  postOrder(root);
 
   for(auto i: result) std::cout << i << " ";
 
   return 0;
 }
 
-// std::vector<int> preOrder(Node* root){
-//   std::vector<int> result;
-//   std::stack<Node*> st;
-//   st.push(root);
-  
-//   if(root == nullptr) return result;
-//   result.push_back(root->data);
-
-//   while(!st.empty()){
-//     Node* stEl = st.top();
-
-//     if(stEl->left != nullptr){
-//       st.push(stEl->left);
-//       result.push_back(st.top()->data);
-//     }else if(stEl->right != nullptr){
-//       st.push(stEl->right);
-//       result.push_back(st.top()->data);
-//     }else{
-//       st.pop();
-//       if(st.empty()) continue; 
-//       else if(stEl == st.top()->left) st.top()->left = nullptr;
-//       else st.top()->right = nullptr;
-//     }
-//   }
-
-//   return result;
-// }
-
-std::vector<int> preOrder(Node* root){
+std::vector<int> postOrder(Node* root){
   std::vector<int> result;
   std::stack<Node*> st;
   st.push(root);
+  
+  if(root == nullptr) return result;
 
   while(!st.empty()){
     Node* stEl = st.top();
-    result.push_back(stEl->data);
-    st.pop();
-    if(stEl->right != nullptr) st.push(stEl->right);
+
     if(stEl->left != nullptr) st.push(stEl->left);
+    else if(stEl->right != nullptr) st.push(stEl->right);
+    else{
+      result.push_back(st.top()->data);
+      st.pop();
+      if(st.empty()) continue; 
+      else if(stEl == st.top()->left) st.top()->left = nullptr;
+      else st.top()->right = nullptr;
+    }
   }
 
   return result;
