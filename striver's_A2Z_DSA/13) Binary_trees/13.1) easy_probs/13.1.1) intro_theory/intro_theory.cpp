@@ -10,7 +10,7 @@
 // -- All the levels must have complete set of nodes
 // -- The last level however could be incomplete with each node at its left most position
 // 3) Perfect-binary tree:
-// -- All lead nodes are at the same level
+// -- All leaf nodes are at the same level
 // 4) Balanced tree:
 // -- Height of the tree at max should be log(N) where N is the number of nodes
 // 5) Degenerate tree:
