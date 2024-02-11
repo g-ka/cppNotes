@@ -47,26 +47,55 @@ Node* root = new Node(1);
   return 0;
 }
 
+// 1) Destruction method:
+
+// std::vector<int> postOrder(Node* root){
+//   std::vector<int> result;
+//   std::stack<Node*> st;
+//   st.push(root);
+  
+//   if(root == nullptr) return result;
+
+//   while(!st.empty()){
+//     Node* stEl = st.top();
+
+//     if(stEl->left != nullptr) st.push(stEl->left);
+//     else if(stEl->right != nullptr) st.push(stEl->right);
+//     else{
+//       result.push_back(st.top()->data);
+//       st.pop();
+//       if(st.empty()) continue; 
+//       else if(stEl == st.top()->left) st.top()->left = nullptr;
+//       else st.top()->right = nullptr;
+//     }
+//   }
+
+//   return result;
+// }
+
+// 2) Normal method:
+
 std::vector<int> postOrder(Node* root){
   std::vector<int> result;
   std::stack<Node*> st;
   st.push(root);
-  
-  if(root == nullptr) return result;
+  Node* lastNode = nullptr;
 
   while(!st.empty()){
-    Node* stEl = st.top();
-
-    if(stEl->left != nullptr) st.push(stEl->left);
-    else if(stEl->right != nullptr) st.push(stEl->right);
+    if(st.top()->left != nullptr) st.push(st.top()->left);
+    else if(st.top()->right != nullptr) st.push(st.top()->right);
     else{
-      result.push_back(st.top()->data);
-      st.pop();
-      if(st.empty()) continue; 
-      else if(stEl == st.top()->left) st.top()->left = nullptr;
-      else st.top()->right = nullptr;
+      // lastNode = st.top();
+      // result.push_back(st.top()->data);
+      // st.pop();
+
+      while(st.top()->right == nullptr || st.top()->right == lastNode){
+        lastNode = st.top();
+        result.push_back(st.top()->data);
+        st.pop();
+        if(st.empty()) return result;
+      }
+      st.push(st.top()->right);
     }
   }
-
-  return result;
 }

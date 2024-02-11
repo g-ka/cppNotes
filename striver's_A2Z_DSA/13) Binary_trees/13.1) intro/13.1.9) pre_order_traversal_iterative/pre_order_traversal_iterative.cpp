@@ -47,6 +47,8 @@ Node* root = new Node(1);
   return 0;
 }
 
+// 1) Destruction method:
+
 // std::vector<int> preOrder(Node* root){
 //   std::vector<int> result;
 //   std::stack<Node*> st;
@@ -74,6 +76,8 @@ Node* root = new Node(1);
 
 //   return result;
 // }
+
+// 2) Normal method:
 
 std::vector<int> preOrder(Node* root){
   std::vector<int> result;
