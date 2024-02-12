@@ -85,10 +85,6 @@ std::vector<int> postOrder(Node* root){
     if(st.top()->left != nullptr) st.push(st.top()->left);
     else if(st.top()->right != nullptr) st.push(st.top()->right);
     else{
-      // lastNode = st.top();
-      // result.push_back(st.top()->data);
-      // st.pop();
-
       while(st.top()->right == nullptr || st.top()->right == lastNode){
         lastNode = st.top();
         result.push_back(st.top()->data);
