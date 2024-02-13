@@ -23,7 +23,7 @@ class Node{
   }
 };
 
-std::vector<std::list<int>> zigzagLevelOrder(Node* root);
+std::vector<std::vector<int>> zigzagLevelOrder(Node* root);
 
 int main(){
 
@@ -40,7 +40,7 @@ int main(){
   root->right->right->right = new Node(10);
   root->right->right->left = new Node(9);
 
-  std::vector<std::list<int>> result =  zigzagLevelOrder(root);
+  std::vector<std::vector<int>> result =  zigzagLevelOrder(root);
 
   for(auto i: result){
     for(auto j: i){
@@ -52,37 +52,36 @@ int main(){
   return 0;
 }
 
-std::vector<std::list<int>> zigzagLevelOrder(Node* root){
-  std::queue<Node*> q;
-  std::vector<std::list<int>> result;
-  q.push(root);
-  int count = 1;
-  bool isOdd = true;
+std::vector<std::vector<int>> zigzagLevelOrder(Node* root){
+  std::vector<std::vector<int>> result;
+
+  if(root == nullptr) return result;
+
+  std::stack<Node*> st;
+  std::queue<std::stack<Node*>> q;
+  st.push(root);
+  q.push(st);
+  int isOdd = true;
 
   while(!q.empty()){
-    std::list<int> level;
-    int countTemp = count;
-    count = 0;
-
-    for(int i=countTemp; i>0; i--){
-      Node* temp = q.front();
-      q.pop();
-      
-      if(isOdd) level.push_back(temp->data);
-      else level.push_front(temp->data);
-
-      if(temp->left != nullptr){
-        q.push(temp->left);
-        count++;
-      }
-      if(temp->right != nullptr){
-        q.push(temp->right);
-        count++;
+    std::stack<Node*> stTemp;
+    std::vector<int> level;
+    while(!q.front().empty()){
+      Node* temp = q.front().top();
+      q.front().pop();
+      level.push_back(temp->data);
+      if(isOdd){
+        if(temp->left != nullptr) stTemp.push(temp->left);
+        if(temp->right != nullptr) stTemp.push(temp->right);
+      }else{
+        if(temp->right != nullptr) stTemp.push(temp->right);
+        if(temp->left != nullptr) stTemp.push(temp->left);
       }
     }
-
-    isOdd = !isOdd;
     result.push_back(level);
+    if(!stTemp.empty()) q.push(stTemp);            
+    q.pop();      
+    isOdd = !isOdd;
   }
 
   return result;
