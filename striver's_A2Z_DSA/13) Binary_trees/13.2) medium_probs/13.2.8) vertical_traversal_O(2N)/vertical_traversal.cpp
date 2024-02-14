@@ -23,7 +23,7 @@ class Node{
   }
 };
 
-std::vector<std::vector<int>> verticalView(Node* root);
+std::vector<std::vector<int>> verticalTraversal(Node* root);
 
 int main(){
 
@@ -40,7 +40,7 @@ int main(){
   root->right->right->right = new Node(10);
   root->right->right->left = new Node(9);
 
-  std::vector<std::vector<int>> result =  verticalView(root);
+  std::vector<std::vector<int>> result =  verticalTraversal(root);
 
   for(auto i: result){
     for(auto j: i){
@@ -52,10 +52,13 @@ int main(){
   return 0;
 }
 
-std::vector<std::vector<int>> verticalView(Node* root){
+std::vector<std::vector<int>> verticalTraversal(Node* root){
   std::vector<std::vector<int>> nonNegatives;
   std::vector<std::vector<int>> negatives;
   std::vector<std::vector<int>> result;
+
+  if(root == nullptr) return result;
+
   std::queue<std::stack<std::pair<Node*, int>>> q;  
   std::stack<std::pair<Node*, int>> st;
   st.push({root, 0});

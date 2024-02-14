@@ -53,6 +53,9 @@ std::vector<int> verticalView(Node* root){
   std::vector<std::vector<int>> nonNegatives;
   std::vector<std::vector<int>> negatives;
   std::vector<int> result;
+
+  if(root == nullptr) return result;
+
   std::queue<std::stack<std::pair<Node*, int>>> q;  
   std::stack<std::pair<Node*, int>> st;
   st.push({root, 0});
